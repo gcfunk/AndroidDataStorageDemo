@@ -17,9 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        myToolbar.inflateMenu(R.menu.main_menu);
         setSupportActionBar(myToolbar);
-
 
         //set and get a shared preference
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.gregfunk.androiddatastoragedemo", Context.MODE_PRIVATE);
