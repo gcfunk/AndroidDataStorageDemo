@@ -1,6 +1,8 @@
 package com.example.gregfunk.androiddatastoragedemo;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +26,19 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences.edit().putString("username", "greg").apply();
         String username = sharedPreferences.getString("username", "");
         Log.i("username", username);
+
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Are you sure?")
+                .setMessage("Do you definitely want to do this?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i("Button tapped", "Yes");
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
     @Override
