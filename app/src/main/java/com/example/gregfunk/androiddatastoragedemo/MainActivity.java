@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+//import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
+import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,10 +16,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        myToolbar.inflateMenu(R.menu.main_menu);
+        //setSupportActionBar(myToolbar);
+
+
         //set and get a shared preference
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.gregfunk.androiddatastoragedemo", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("username", "greg").apply();
         String username = sharedPreferences.getString("username", "");
         Log.i("username", username);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.add) {
+            Log.i("Action Button Tapped", "Add");
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
